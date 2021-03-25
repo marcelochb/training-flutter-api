@@ -17,4 +17,10 @@ class CardRepository {
 
     return cards;
   }
+
+  Future<CardListItemModel> fetchCardById(String id) async {
+    final response = await dio.get('$url/$id');
+    final card = CardListItemModel.fromJson(response.data['card']);
+    return card;
+  }
 }

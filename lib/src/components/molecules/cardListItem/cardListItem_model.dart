@@ -5,17 +5,20 @@ class CardListItemModel {
   String text;
   String artist;
   String imageUrl;
+  String id;
 
   CardListItemModel(
-      {this.name,
-      this.type,
-      this.rarity,
-      this.text,
-      this.artist,
-      this.imageUrl});
+      {this.name = '',
+      this.id = '',
+      this.type = '',
+      this.rarity = '',
+      this.text = '',
+      this.artist = '',
+      this.imageUrl = ''});
 
   CardListItemModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
+    id = json['id'];
     type = json['type'];
     rarity = json['rarity'];
     text = json['text'];
@@ -26,6 +29,7 @@ class CardListItemModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
+    data['id'] = this.id;
     data['type'] = this.type;
     data['rarity'] = this.rarity;
     data['text'] = this.text;

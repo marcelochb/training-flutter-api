@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pocket/src/components/organisms/cardList/cardList_repository.dart';
+import 'package:pocket/src/repositories/card_repository.dart';
 
 void main() {
   final repository = CardRepository();
