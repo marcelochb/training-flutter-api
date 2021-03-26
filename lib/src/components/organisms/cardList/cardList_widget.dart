@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:pocket/src/components/molecules/cardListItem/cardListItem_model.dart';
+import 'package:pocket/src/models/card_model.dart';
 import 'package:pocket/src/components/molecules/cardListItem/cardListItm_widget.dart';
 import 'package:pocket/src/theme/color_theme.dart';
 
@@ -15,14 +15,23 @@ class CardListWidget extends StatefulWidget {
 }
 
 class _CardListWidgetState extends State<CardListWidget> {
-  List<CardListItemModel> cards = [];
+  List<ModelOfCard> cards = [];
   final cardRepository = CardRepository();
+  bool isLoading = true;
 
   loadData() async {
-    List<CardListItemModel> _cards = await cardRepository.fetchCards();
-    setState(() {
-      cards = _cards;
-    });
+    try {
+      List<ModelOfCard> _cards = await cardRepository.fetchCards();
+      setState(() {
+        cards = _cards;
+        isLoading = false;
+      });
+    } catch (e) {
+      print('error do widget $e');
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   @override
@@ -33,7 +42,7 @@ class _CardListWidgetState extends State<CardListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (cards.length == 0)
+    if (isLoading)
       return SpinKitRotatingCircle(
         color: ColorTheme.instance.element,
         size: 50.0,

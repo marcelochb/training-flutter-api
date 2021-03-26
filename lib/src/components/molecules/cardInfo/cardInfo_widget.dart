@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:pocket/src/components/atoms/image/image_widget.dart';
 import 'package:pocket/src/components/atoms/label/label_widget.dart';
 import 'package:pocket/src/components/atoms/text/text_widget.dart';
-import 'package:pocket/src/components/molecules/cardListItem/cardListItem_model.dart';
+import 'package:pocket/src/models/card_model.dart';
 
 class CardInfoWidget extends StatelessWidget {
   const CardInfoWidget({Key key, this.item, this.isBackgroundColorWhite = true})
       : super(key: key);
-  final CardListItemModel item;
+  final ModelOfCard item;
   final bool isBackgroundColorWhite;
 
   @override

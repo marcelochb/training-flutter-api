@@ -1,4 +1,6 @@
-class CardListItemModel {
+import 'package:pocket/src/models/foreignNames_model.dart';
+
+class ModelOfCard {
   String name;
   String type;
   String rarity;
@@ -6,17 +8,19 @@ class CardListItemModel {
   String artist;
   String imageUrl;
   String id;
+  List<ModelOfForeignNames> foreignNames;
 
-  CardListItemModel(
+  ModelOfCard(
       {this.name = '',
       this.id = '',
       this.type = '',
       this.rarity = '',
       this.text = '',
       this.artist = '',
-      this.imageUrl = ''});
+      this.imageUrl = '',
+      this.foreignNames});
 
-  CardListItemModel.fromJson(Map<String, dynamic> json) {
+  ModelOfCard.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     id = json['id'];
     type = json['type'];
@@ -24,6 +28,13 @@ class CardListItemModel {
     text = json['text'];
     artist = json['artist'];
     imageUrl = json['imageUrl'];
+    if (json['foreignNames'] != null) {
+      foreignNames = [].cast<ModelOfForeignNames>();
+      json['foreignNames'].forEach((v) {
+        final _foreignName = ModelOfForeignNames.fromJson(v);
+        foreignNames.add(_foreignName);
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -35,6 +46,9 @@ class CardListItemModel {
     data['text'] = this.text;
     data['artist'] = this.artist;
     data['imageUrl'] = this.imageUrl;
+    if (this.foreignNames != null) {
+      data['foreignNames'] = this.foreignNames.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }

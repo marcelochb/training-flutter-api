@@ -12,8 +12,9 @@ class TextWidget extends StatelessWidget {
     return Text(
       '$text',
       style: TextStyle(
-          fontSize: 16,
-          color: isBackgroundColorWhite ? Colors.black : Colors.white),
+        fontSize: 16,
+        color: isBackgroundColorWhite ? Colors.black : Colors.white,
+      ),
     );
   }
 }

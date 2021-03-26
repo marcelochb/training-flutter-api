@@ -1,6 +1,30 @@
-# pocket
+# Training Flutter 
+    Flutter trainning with [MAGIC: THE GATHERING - DEVELOPERS](https://magicthegathering.io/) api.
+## Requirements
+- Infinity scroll card list;
+- Card detail;
+- Make components;
+- Management local state (resiliência);
+- Animations;
 
-A new Flutter project.
+## Tecnologies
+  - dio;
+  - mockito;
+  - hexcolor;
+  - flutter_spinkit;
+  - cached_network_image;
+  - firebase;
+
+## Folders struct
+src
+    components => Atomic components
+        atoms
+        molecules
+        organisms
+    models => Data models
+    pages
+    repositories => Repository with api request
+    theme => Colors, metrics and fontSizes
 
 ## Getting Started
 
