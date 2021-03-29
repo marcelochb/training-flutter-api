@@ -18,8 +18,6 @@ class ForeignNameListItemWidget extends StatelessWidget {
     return SizedBox(
       width: 400,
       child: Card(
-        color: ColorTheme.instance.background,
-        elevation: 3,
         margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
         child: Column(
           children: [
@@ -31,46 +29,50 @@ class ForeignNameListItemWidget extends StatelessWidget {
                   ImageWidget(
                     src: item.imageUrl,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      LabelWidget(
-                          text: 'Nome',
-                          isBackgroundColorWhite: isBackgroundColorWhite),
-                      TextWidget(
-                          text: item.name,
-                          isBackgroundColorWhite: isBackgroundColorWhite),
-                      LabelWidget(
-                          text: 'Idioma',
-                          isMargingTop: true,
-                          isBackgroundColorWhite: isBackgroundColorWhite),
-                      TextWidget(
-                          text: item.language,
-                          isBackgroundColorWhite: isBackgroundColorWhite),
-                      LabelWidget(
-                          text: 'Tipo',
-                          isMargingTop: true,
-                          isBackgroundColorWhite: isBackgroundColorWhite),
-                      TextWidget(
-                          text: item.type,
-                          isBackgroundColorWhite: isBackgroundColorWhite),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        LabelWidget(
+                            text: 'Nome',
+                            isBackgroundColorWhite: isBackgroundColorWhite),
+                        TextWidget(
+                            text: item.name,
+                            isBackgroundColorWhite: isBackgroundColorWhite),
+                        LabelWidget(
+                            text: 'Idioma',
+                            isMargingTop: true,
+                            isBackgroundColorWhite: isBackgroundColorWhite),
+                        TextWidget(
+                            text: item.language,
+                            isBackgroundColorWhite: isBackgroundColorWhite),
+                        LabelWidget(
+                            text: 'Tipo',
+                            isMargingTop: true,
+                            isBackgroundColorWhite: isBackgroundColorWhite),
+                        TextWidget(
+                            text: item.type,
+                            isBackgroundColorWhite: isBackgroundColorWhite),
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LabelWidget(
-                      text: 'Descrição',
-                      isBackgroundColorWhite: isBackgroundColorWhite),
-                  TextWidget(
-                      text: item.text,
-                      isBackgroundColorWhite: isBackgroundColorWhite)
-                ],
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    LabelWidget(
+                        text: 'Descrição',
+                        isBackgroundColorWhite: isBackgroundColorWhite),
+                    TextWidget(
+                        text: item.text,
+                        isBackgroundColorWhite: isBackgroundColorWhite)
+                  ],
+                ),
               ),
             ),
           ],

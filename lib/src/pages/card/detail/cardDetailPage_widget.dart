@@ -66,8 +66,9 @@ class _CardDetailPageState extends State<CardDetailPage> {
                     isBackgroundColorWhite: false,
                   ),
                   Container(
-                    height: 400,
+                    height: 500,
                     child: ListView.builder(
+                        shrinkWrap: true,
                         itemCount: card.foreignNames.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {

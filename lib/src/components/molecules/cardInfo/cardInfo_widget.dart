@@ -22,30 +22,32 @@ class CardInfoWidget extends StatelessWidget {
               ImageWidget(
                 src: item.imageUrl,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LabelWidget(
-                      text: 'Nome',
-                      isBackgroundColorWhite: isBackgroundColorWhite),
-                  TextWidget(
-                      text: item.name,
-                      isBackgroundColorWhite: isBackgroundColorWhite),
-                  LabelWidget(
-                      text: 'Artista',
-                      isMargingTop: true,
-                      isBackgroundColorWhite: isBackgroundColorWhite),
-                  TextWidget(
-                      text: item.artist,
-                      isBackgroundColorWhite: isBackgroundColorWhite),
-                  LabelWidget(
-                      text: 'Tipo',
-                      isMargingTop: true,
-                      isBackgroundColorWhite: isBackgroundColorWhite),
-                  TextWidget(
-                      text: item.type,
-                      isBackgroundColorWhite: isBackgroundColorWhite),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    LabelWidget(
+                        text: 'Nome',
+                        isBackgroundColorWhite: isBackgroundColorWhite),
+                    TextWidget(
+                        text: item.name,
+                        isBackgroundColorWhite: isBackgroundColorWhite),
+                    LabelWidget(
+                        text: 'Artista',
+                        isMargingTop: true,
+                        isBackgroundColorWhite: isBackgroundColorWhite),
+                    TextWidget(
+                        text: item.artist,
+                        isBackgroundColorWhite: isBackgroundColorWhite),
+                    LabelWidget(
+                        text: 'Tipo',
+                        isMargingTop: true,
+                        isBackgroundColorWhite: isBackgroundColorWhite),
+                    TextWidget(
+                        text: item.type,
+                        isBackgroundColorWhite: isBackgroundColorWhite),
+                  ],
+                ),
               )
             ],
           ),
