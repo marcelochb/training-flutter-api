@@ -8,8 +8,6 @@ import 'package:pocket/src/theme/color_theme.dart';
 import '../../../repositories/card_repository.dart';
 
 class CardListWidget extends StatefulWidget {
-  CardListWidget({Key key}) : super(key: key);
-
   @override
   _CardListWidgetState createState() => _CardListWidgetState();
 }

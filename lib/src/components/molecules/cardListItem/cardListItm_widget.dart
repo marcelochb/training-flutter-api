@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pocket/src/components/atoms/button/button_widget.dart';
@@ -23,8 +24,7 @@ class CardListItemWidget extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: ButtonWidget(
               label: 'Detalhes',
-              onPress: () {
-                // Navigator.of(context).pushNamed('/CardDetail');
+              onPress: () async {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
