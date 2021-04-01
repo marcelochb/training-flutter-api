@@ -15,31 +15,47 @@ abstract class _SignUpControllerBase with Store {
   CollectionReference _users = Firestore.instance.collection('users');
   final user = UserModel();
 
+  Future<AuthResult> _createUserInAuthFirebase() {
+    return FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: user.email, password: user.password);
+  }
+
+  void _createUserToDatabaseFirebase(AuthResult signUpResponse) {
+    _users
+        .document(signUpResponse.user.uid)
+        .setData({
+          'name': user.name,
+          'email': user.email,
+          'uid': signUpResponse.user.uid
+        })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
+  }
+
+  void _persistDataAtLocalStorage(IdTokenResult tokenResponse) async {
+    final SharedPreferences localStorage = await _localStorage;
+    localStorage.setBool('signed', true);
+    localStorage.setString('email', user.email);
+    localStorage.setString('name', user.name);
+    localStorage.setString('token', tokenResponse.token);
+  }
+
+  void _navigateToCardlistPage() {
+    _navigationService.navigateToReplacement('/CardList');
+  }
+
   @action
   signUp() async {
     try {
-      final signUpResponse = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: user.email, password: user.password);
+      final signUpResponse = await _createUserInAuthFirebase();
 
-      _users
-          .document(signUpResponse.user.uid)
-          .setData({
-            'name': user.name,
-            'email': user.email,
-            'uid': signUpResponse.user.uid
-          })
-          .then((value) => print("User Added"))
-          .catchError((error) => print("Failed to add user: $error"));
+      _createUserToDatabaseFirebase(signUpResponse);
 
       final tokenResponse = await signUpResponse.user.getIdToken();
 
-      final SharedPreferences localStorage = await _localStorage;
-      localStorage.setBool('signed', true);
-      localStorage.setString('email', user.email);
-      localStorage.setString('name', user.name);
-      localStorage.setString('token', tokenResponse.token);
-      _navigationService.navigateToReplacement('/CardList');
+      _persistDataAtLocalStorage(tokenResponse);
+
+      _navigateToCardlistPage();
     } catch (e) {
       print('error $e');
     }

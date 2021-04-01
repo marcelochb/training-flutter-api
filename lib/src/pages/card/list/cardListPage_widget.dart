@@ -12,7 +12,6 @@ class CardListPage extends StatefulWidget {
 }
 
 class _CardListPageState extends State<CardListPage> {
-  @override
   Future<SharedPreferences> _localStorage = SharedPreferences.getInstance();
   String userName = '';
 
