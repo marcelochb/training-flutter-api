@@ -1,6 +1,8 @@
 # Training Flutter 
     Flutter trainning with [MAGIC: THE GATHERING - DEVELOPERS](https://magicthegathering.io/) api.
 ## Requirements
+- SignIn
+- SignUp
 - Infinity scroll card list;
 - Card detail;
 - Make components;
@@ -8,23 +10,27 @@
 - Animations;
 
 ## Tecnologies
+  - Firebase (auth | firestone)
   - dio;
   - mockito;
   - hexcolor;
   - flutter_spinkit;
   - cached_network_image;
-  - firebase;
+  - mobx;
+  - provider;
+  - get_it;
+  - shared_preferences;
 
 ## Folders struct
-src
-    components => Atomic components
-        atoms
-        molecules
-        organisms
-    models => Data models
-    pages
-    repositories => Repository with api request
-    theme => Colors, metrics and fontSizes
+    1 - src
+    1.1 - components => Atomic components
+    1.1.1 - atoms
+    1.1.2 - molecules
+    1.1.3 - organisms
+    1.2 - models => Data models
+    1.3 - pages
+    1.4 - repositories => Repository with api request
+    1.5 - theme => Colors, metrics and fontSizes
 
 ## Getting Started
 
